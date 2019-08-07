@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NIC Parent" Class="SampleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=&quot;NIC Parent&quot;;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NIC_ParentConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.student" Member="students">
+    <Type Name="student" Id="ID1">
+      <Column Name="std_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="std_Fname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="std_Lname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="std_class" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="student_guardian" Member="guardians" ThisKey="std_id" OtherKey="std_id" Type="guardian" />
+    </Type>
+  </Table>
+  <Table Name="dbo.guardian" Member="guardians">
+    <Type Name="guardian">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="g_Fname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="g_Lname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="g_Address" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="std_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="student_guardian" Member="student" ThisKey="std_id" OtherKey="std_id" Type="student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spAddGuardian" Method="spAddGuardian">
+    <Parameter Name="F_Name" Parameter="f_Name" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="L_Name" Parameter="l_Name" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="std_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spDltStd" Method="spDltStd">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spGetAllCount" Method="spGetAllCount">
+    <Parameter Name="num" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="spGetAllCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetGuardianByStdId" Method="spGetGuardianByStdId">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetGuardianByStdIdResult">
+      <Column Name="g_Fname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="g_Lname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="g_Address" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetResponseStudent" Method="spGetResponseStudent">
+    <Parameter Name="fname" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="lname" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="class" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spGetResponseStudentResult">
+      <Column Name="std_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="std_Fname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="std_Lname" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="std_class" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spindexWork" Method="spindexWork">
+    <Parameter Name="pageindex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="incr" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+</Database>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Sample">
+  <DataContextMoniker Name="/SampleDataContext" />
+  <nestedChildShapes>
+    <classShape Id="4a244e7c-6386-4fcb-879d-11bbc472cae5" absoluteBounds="0.75, 1, 2, 1.5785953776041664">
+      <DataClassMoniker Name="/SampleDataContext/student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82a3dea8-a4e9-49bd-84cc-ee4a628d6534" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1e4e16c9-37fe-45c2-b63a-da10d95feabc" absoluteBounds="3.5, 0.875, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/SampleDataContext/guardian" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e61f1d2b-27c9-4761-977e-cb82c015a08b" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.78929768880208); (3.5 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SampleDataContext/student/student_guardian" />
+      <nodes>
+        <classShapeMoniker Id="4a244e7c-6386-4fcb-879d-11bbc472cae5" />
+        <classShapeMoniker Id="1e4e16c9-37fe-45c2-b63a-da10d95feabc" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
